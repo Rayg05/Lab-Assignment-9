@@ -86,7 +86,9 @@ void displayRecordsInHash(struct RecordType pData[], int dataSz)
         if (hashTable[index] == NULL)
         {
             hashTable[index] = (struct RecordType*) malloc(sizeof(struct RecordType));
-            memcpy(hashTable[index], record, sizeof(struct RecordType));
+            hashTable[index]->id = record->id;
+            hashTable[index]->name = record->name;
+            hashTable[index]->order = record->order;
             hashTable[index]->next = NULL;
         }
         else
@@ -98,7 +100,9 @@ void displayRecordsInHash(struct RecordType pData[], int dataSz)
                 current = current->next;
             }
             current->next = (struct RecordType*) malloc(sizeof(struct RecordType));
-            memcpy(current->next, record, sizeof(struct RecordType));
+            current->next->id = record->id;
+            current->next->name = record->name;
+            current->next->order = record->order;
             current->next->next = NULL;
         }
     }
